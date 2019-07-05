@@ -3,7 +3,7 @@ package ru.skillbranch.kotlinlesson2.models
 import ru.skillbranch.kotlinlesson2.utils.Utils
 import java.util.*
 
-class User(
+data class User(
     val id: String,
     var firstName: String?,
     var lastName: String?,
