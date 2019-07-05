@@ -1,5 +1,6 @@
 package ru.skillbranch.kotlinlesson2.models
 
+import ru.skillbranch.kotlinlesson2.utils.Utils
 import java.util.*
 
 class User(
@@ -34,14 +35,11 @@ class User(
 
         fun makeUser(fullName: String?): User {
             lastId++
-            val fullName1: String? = fullName?.replace("  ", " ", true)
 
-            val parts: List<String>? = fullName1?.split(" ")
-
-            val firstName: String? = parts?.getOrNull(0)
-            val lastName: String? = parts?.getOrNull(1)
+            val (firstName, lastName) = Utils.parseFuLLName(fullName)
 
             return User(id = "$lastId", firstName = "$firstName", lastName = "$lastName")
         }
     }
 }
+

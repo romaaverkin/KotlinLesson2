@@ -24,9 +24,11 @@ class ExampleUnitTest {
 
     @Test
     fun test_factory() {
-//        val user = User.makeUser("")
-//        val user2 = User.makeUser(" ")
-//        val user3 = User.makeUser(null)
-        val user4 = User.makeUser("   John      gfg")
+        val user = User.makeUser("")
+        val user2 = User.makeUser(" ")
+        val user3 = User.makeUser(null)
+        val user4 = User.makeUser("John")
+        val user5 = User.makeUser("   John      gfg")
+        val user6 = User.makeUser("Roman Averkin")
     }
 }
