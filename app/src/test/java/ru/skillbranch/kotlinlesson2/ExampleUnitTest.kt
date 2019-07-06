@@ -3,6 +3,9 @@ package ru.skillbranch.kotlinlesson2
 import org.junit.Test
 
 import org.junit.Assert.*
+import ru.skillbranch.kotlinlesson2.extensions.TimeUnits
+import ru.skillbranch.kotlinlesson2.extensions.add
+import ru.skillbranch.kotlinlesson2.extensions.format
 import ru.skillbranch.kotlinlesson2.models.User
 import java.util.*
 
@@ -50,13 +53,15 @@ class ExampleUnitTest {
     fun test_copy() {
         val user = User.makeUser("John Wick")
         var user2 = user.copy(lastVisit = Date())
-        var user3 = user.copy(lastName = "Cena", lastVisit = Date())
+        var user3 = user.copy(lastVisit = Date().add(-2, TimeUnits.SECOND))
+        var user4 = user.copy(lastName = "Cena", lastVisit = Date().add(2, TimeUnits.HOUR))
 
         println(
             """
-        $user
-        $user2
-        $user3            
+        ${user.lastVisit?.format()}
+        ${user2.lastVisit?.format()}
+        ${user3.lastVisit?.format()}         
+        ${user4.lastVisit?.format()}         
         """.trimIndent()
         )
     }
