@@ -1,6 +1,5 @@
 package ru.skillbranch.kotlinlesson2.extensions
 
-import java.lang.IllegalStateException
 import java.text.SimpleDateFormat
 import java.util.*
 
