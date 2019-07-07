@@ -6,6 +6,7 @@ import org.junit.Assert.*
 import ru.skillbranch.kotlinlesson2.extensions.TimeUnits
 import ru.skillbranch.kotlinlesson2.extensions.add
 import ru.skillbranch.kotlinlesson2.extensions.format
+import ru.skillbranch.kotlinlesson2.extensions.toUserView
 import ru.skillbranch.kotlinlesson2.models.User
 import java.util.*
 
@@ -64,5 +65,14 @@ class ExampleUnitTest {
         ${user4.lastVisit?.format()}         
         """.trimIndent()
         )
+    }
+
+    @Test
+    fun test_dataq_mapping() {
+        val user = User.makeUser("Amazing Петр")
+        println(user)
+
+        val userView = user.toUserView()
+        userView.printMe()
     }
 }
