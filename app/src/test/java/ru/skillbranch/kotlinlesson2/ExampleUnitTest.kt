@@ -4,7 +4,7 @@ import org.junit.Test
 
 import org.junit.Assert.*
 import ru.skillbranch.kotlinlesson2.extensions.*
-import ru.skillbranch.kotlinlesson2.models.User
+import ru.skillbranch.kotlinlesson2.models.*
 import ru.skillbranch.kotlinlesson2.utils.Utils
 import java.util.*
 
@@ -86,11 +86,21 @@ class ExampleUnitTest {
 
     @Test
     fun test_humanize_diff() {
-        println(Date().add(-1, TimeUnits.SECOND).humanizeDiff()) //2 часа назад
+        println(Date().add(-2, TimeUnits.HOUR).humanizeDiff()) //2 часа назад
         println(Date().add(-5, TimeUnits.DAY).humanizeDiff()) //5 дней назад
         println(Date().add(2, TimeUnits.MINUTE).humanizeDiff()) //через 2 минуты
         println(Date().add(7, TimeUnits.DAY).humanizeDiff()) //через 7 дней
         println(Date().add(-400, TimeUnits.DAY).humanizeDiff()) //более года назад
         println(Date().add(400, TimeUnits.DAY).humanizeDiff()) //более чем через год
+    }
+
+    @Test
+    fun test_abstract_factory() {
+        val user = User.makeUser("Макеев Михаил")
+        val txtMessage = BaseMessage.makeUser(user, Chat("0"), payload = "any text message", type = "text")
+        val imgMessage = BaseMessage.makeUser(user, Chat("0"), payload = "any image url", type = "image")
+
+        println(txtMessage.formatMessage())
+        println(imgMessage.formatMessage())
     }
 }

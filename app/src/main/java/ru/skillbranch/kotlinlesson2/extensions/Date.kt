@@ -48,13 +48,6 @@ fun Date.humanizeDiff(date: Date = Date()): String {
     }
 }
 
-//enum class TimeUnits {
-//    SECOND,
-//    MINUTE,
-//    HOUR,
-//    DAY
-//}
-
 enum class TimeUnits {
     SECOND {
         override fun plural(value: Int): String {
