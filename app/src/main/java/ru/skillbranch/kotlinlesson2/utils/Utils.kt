@@ -41,11 +41,17 @@ object Utils {
         return myString
     }
 
-    fun toInitials(firstName: String?, lastName: String?): String? = when {
-        firstName.isNullOrBlank() && lastName.isNullOrBlank() -> null
-        !firstName.isNullOrBlank() && lastName.isNullOrBlank() -> firstName[0].toUpperCase().toString()
-        firstName.isNullOrBlank() && !lastName.isNullOrBlank() -> lastName[0].toUpperCase().toString()
-        !firstName.isNullOrBlank() && !lastName.isNullOrBlank() -> firstName[0].toUpperCase() + lastName[0].toUpperCase().toString()
-        else -> throw IllegalStateException("Incorrect state in 'when' expression")
+    fun toInitials(firstName: String?, lastName: String?): String? {
+        var initialString = ""
+
+        if (firstName != null && firstName.trim() != "") {
+            initialString += firstName[0].toUpperCase()
+        }
+
+        if (lastName != null && lastName.trim() != "") {
+            initialString += lastName[0].toUpperCase()
+        }
+
+        return if (initialString != "") initialString else null
     }
 }

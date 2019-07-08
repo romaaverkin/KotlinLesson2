@@ -3,11 +3,9 @@ package ru.skillbranch.kotlinlesson2
 import org.junit.Test
 
 import org.junit.Assert.*
-import ru.skillbranch.kotlinlesson2.extensions.TimeUnits
-import ru.skillbranch.kotlinlesson2.extensions.add
-import ru.skillbranch.kotlinlesson2.extensions.format
-import ru.skillbranch.kotlinlesson2.extensions.toUserView
+import ru.skillbranch.kotlinlesson2.extensions.*
 import ru.skillbranch.kotlinlesson2.models.User
+import ru.skillbranch.kotlinlesson2.utils.Utils
 import java.util.*
 
 /**
@@ -69,10 +67,30 @@ class ExampleUnitTest {
 
     @Test
     fun test_dataq_mapping() {
-        val user = User.makeUser("Amazing Петр")
-        println(user)
+        val user = User.makeUser("Макеев Михаил")
+        val newUser = user.copy(lastVisit = Date().add(-800, TimeUnits.DAY))
+        println(newUser)
 
-        val userView = user.toUserView()
+        val userView = newUser.toUserView()
+
         userView.printMe()
+    }
+
+    @Test
+    fun test_to_initial() {
+        println(Utils.toInitials("john", "doe")) //JD
+        println(Utils.toInitials("John", null)) //J
+        println(Utils.toInitials(null, null)) //null
+        println(Utils.toInitials(" ", "")) //null
+    }
+
+    @Test
+    fun test_humanize_diff() {
+        println(Date().add(-1, TimeUnits.SECOND).humanizeDiff()) //2 часа назад
+        println(Date().add(-5, TimeUnits.DAY).humanizeDiff()) //5 дней назад
+        println(Date().add(2, TimeUnits.MINUTE).humanizeDiff()) //через 2 минуты
+        println(Date().add(7, TimeUnits.DAY).humanizeDiff()) //через 7 дней
+        println(Date().add(-400, TimeUnits.DAY).humanizeDiff()) //более года назад
+        println(Date().add(400, TimeUnits.DAY).humanizeDiff()) //более чем через год
     }
 }
